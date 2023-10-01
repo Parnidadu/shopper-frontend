@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom'
+import api from "../config/api"
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -7,14 +10,32 @@ const LoginForm = () => {
     password: '',
   });
 
+  const navigate = useNavigate()
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    // Handle login logic here (send data to the backend)
+    try{
+        let {data} = await api.post('/login',formData)
+        const token = data.token; 
+        localStorage.setItem('token', token)
+        console.log("data and token", data, token)
+        navigate('/shop')
+        toast.success(data.message, {
+            position: 'top-right',
+            autoClose: 2000, 
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          });
+    }
+    catch(e){
+        console.log("error",e)
+    }
   };
 
   return (

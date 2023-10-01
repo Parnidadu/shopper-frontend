@@ -1,25 +1,15 @@
 import React from 'react';
-import { Route, Redirect, RouteProps } from 'react-router-dom';
+import { useNavigate, Route } from 'react-router-dom';
 
-interface ProtectedRouteProps extends RouteProps {
-  component: React.ComponentType<any>;
-}
-
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ component: Component, ...rest }) => {
-  const isAuthenticated = localStorage.getItem('token'); // Check if user is authenticated (you might use a more secure method)
-  
-  return (
-    <Route
-      {...rest}
-      render={(props) =>
-        isAuthenticated ? (
-          <Component {...props} />
-        ) : (
-          <Redirect to="/login" />
-        )
-      }
-    />
-  );
+const PrivateRoute = ({ element: Element, ...rest }) => {
+    const navigate = useNavigate();
+    const isAuthenticated = localStorage.getItem('token'); // Check if the user is authenticated (you can implement your own logic here)
+    console.log("isAuthenticate", isAuthenticated)
+    if (!isAuthenticated) {
+        navigate('/login');
+        return null;
+    }
+    return <Route {...rest} element={<Element />} />;
 };
 
-export default ProtectedRoute;
+export default PrivateRoute;
