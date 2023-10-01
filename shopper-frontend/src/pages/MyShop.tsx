@@ -173,7 +173,7 @@ const MyShop = () => {
 			{/* Shop List */}
 			{shops?.length<=0 && 
 			<div style={{display:'flex', justifyContent:'center', marginTop:10}}>
-				<ActionCardProduct shop={{name:"No product Added", description:"please add some product"}}/>
+				<ActionCardProduct shop={{name:"No product Added", description:"please add some product", show:false}}  />
 			</div>
 			}
 			<Container maxWidth="lg" style={{ marginTop: '2rem' }}>

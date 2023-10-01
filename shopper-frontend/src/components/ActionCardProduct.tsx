@@ -31,14 +31,14 @@ export default function MultiActionAreaCard(props) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
+      {!props?.shop?.name?.includes("No") &&<CardActions>
         <Button size="small" color="primary" onClick={()=>props?.handleEdit(props?.shop?._id)}>
           Edit
         </Button>
         <Button size="small" color="primary" onClick={()=>props?.handleDelete(props?.shop?._id)}>
           Delete
         </Button>
-      </CardActions>
+      </CardActions>}
     </Card>
   );
 }
