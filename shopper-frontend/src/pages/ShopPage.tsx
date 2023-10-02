@@ -98,7 +98,6 @@ const ShopPage = () => {
     fetchShops()
   },[])
   const handleLogout = () => {
-    // Clear token from local storage
     localStorage.removeItem('token');
     toast.success('Logged out successfully!');
     navigate('/login'); // Redirect to the login page

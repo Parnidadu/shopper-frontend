@@ -5,10 +5,6 @@ import {
     Row,
     Button,
     Card,
-    Form,
-    FormGroup,
-    FormControl,
-    FormLabel,
   } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -23,7 +19,7 @@ const HomePage = () => {
                 <h4 className="text-center">
                   Online Store For Locals, By Locals
                 </h4>
-                <Link to="/login">
+                <Link to="/shop">
                   <Button className="my-3" size="lg">
                     Start Shopping now
                   </Button>
@@ -89,7 +85,7 @@ const HomePage = () => {
                 </h2>
                 <h4 className="text-center">Manage Products and Categories</h4>
                 <h4 className="text-center">Manage Orders and Payments</h4>
-                <Link to="/login">
+                <Link to="/shop">
                   <Button className="my-3" size="lg">
                     Start Selling
                   </Button>

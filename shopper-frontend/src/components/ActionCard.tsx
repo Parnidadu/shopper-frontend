@@ -5,8 +5,18 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { Link } from 'react-router-dom';
-
-export default function MultiActionAreaCard(props) {
+interface Shop {
+    _id: string;
+    name: string;
+    bio: string;
+    // Add more properties as needed
+  }
+  
+  interface MultiActionAreaCardProps {
+    shop?: Shop;
+  }
+  
+const MultiActionAreaCard: React.FC<MultiActionAreaCardProps>=(props)=> {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea component={Link} to={`/shop/${props?.shop?._id}`}>
@@ -33,3 +43,4 @@ export default function MultiActionAreaCard(props) {
     </Card>
   );
 }
+export default MultiActionAreaCard;

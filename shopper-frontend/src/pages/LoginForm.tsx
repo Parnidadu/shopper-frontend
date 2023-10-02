@@ -23,7 +23,7 @@ const LoginForm = () => {
         const token = data.token; 
         localStorage.setItem('token', token)
         console.log("data and token", data, token)
-        navigate('/shop')
+        await navigate('/shop')
         toast.success(data.message, {
             position: 'top-right',
             autoClose: 2000, 
