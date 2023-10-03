@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom'
@@ -15,7 +15,17 @@ const LoginForm = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
+  const isAuthenticated = () => {  
+    const result = localStorage.getItem('token') !== null;
+    return result
+  };
+  useEffect(() => {
+    ;(async () => {
+      if (isAuthenticated()) {
+        await navigate('/shop');
+      }
+    })()
+  }, [])
   const handleSubmit = async(e) => {
     e.preventDefault();
     try{

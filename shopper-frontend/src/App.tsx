@@ -12,7 +12,6 @@ const isAuthenticated = () => {
   console.log("result",result)
   return result
 };
-
 const App: React.FC = () => {
   return (
     <Router>
